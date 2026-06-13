@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body data-bs-theme="light" class="bg-body text-body">
+
+<div id="theme-toggle" style="position: fixed; top: 20px; right: 20px; cursor: pointer; z-index: 1000;">
+  <i class="fas fa-moon fa-lg"></i>
+</div>
+
+<div class="container py-4">
+
+  <h1 class="mb-4">Seu Carrinho 🛒</h1>
+
+  <div id="cartItems"></div>
+
+  <h3 class="mt-4" id="total"></h3>
+
+  <button class="btn btn-success w-100 mt-3 fw-bold" onclick="finalizarCompra()">
+    Finalizar compra
+  </button>
+
+</div>
+
+<script>
+
+const cartItemsDiv = document.getElementById('cartItems');
+const totalDiv = document.getElementById('total');
+
+// Buscar carrinho
+async function getCart() {
+  const response = await fetch('http://localhost:3000/api/carrinho');
+  return await response.json();
+}
+
+// Renderizar carrinho
+async function render() {
+
+  let cart = await getCart();
+
+  let agrupado = [];
+  let total = 0;
+
+  cart.forEach(item => {
+
+    let exist = agrupado.find(
+      p => p.nome === item.nome
+    );
+
+    if (exist) {
+      exist.qtd++;
+    } else {
+      agrupado.push({
+        nome: item.nome,
+        preco: item.preco,
+        img: item.img,
+        qtd: 1
+      });
+    }
+
+  });
+
+  cartItemsDiv.innerHTML = "";
+
+  if (agrupado.length === 0) {
+
+    cartItemsDiv.innerHTML = "<p>Carrinho vazio</p>";
+    totalDiv.innerText = "";
+
+    return;
+  }
+
+  agrupado.forEach(item => {
+
+    let precoNumero = Number(
+      item.preco
+        .replace('R$', '')
+        .replace(/\./g, '')
+        .replace(',', '.')
+    );
+
+    let subtotal = precoNumero * item.qtd;
+
+    total += subtotal;
+
+    cartItemsDiv.innerHTML += `
+      <div class="border p-3 rounded mb-3 d-flex gap-3 align-items-center">
+
+        <img
+          src="${item.img}"
+          width="80"
+          style="border-radius:8px"
+        >
+
+        <div style="flex:1">
+
+          <strong>${item.nome}</strong>
+
+          <p>${item.preco}</p>
+
+          <p>Qtd: ${item.qtd}</p>
+
+          <p>
+            <b>Subtotal:</b>
+            R$ ${subtotal.toLocaleString('pt-BR', {
+              minimumFractionDigits: 2
+            })}
+          </p>
+
+          <button
+            class="btn btn-sm btn-secondary"
+            onclick="diminuir('${item.nome}')">
+            -
+          </button>
+
+          <button
+            class="btn btn-sm btn-secondary"
+            onclick="aumentar('${item.nome}')">
+            +
+          </button>
+
+          <button
+            class="btn btn-sm btn-danger"
+            onclick="removerTudo('${item.nome}')">
+            Remover
+          </button>
+
+        </div>
+
+      </div>
+    `;
+  });
+
+  totalDiv.innerText =
+    "Total: R$ " +
+    total.toLocaleString('pt-BR', {
+      minimumFractionDigits: 2
+    });
+
+}
+
+render();
+
+// Aumentar quantidade
+async function aumentar(nome){
+
+  await fetch(
+    `http://localhost:3000/api/carrinho/${encodeURIComponent(nome)}/mais`,
+    {
+      method:'PUT'
+    }
+  );
+
+  render();
+}
+
+// Diminuir quantidade
+async function diminuir(nome){
+
+  await fetch(
+    `http://localhost:3000/api/carrinho/${encodeURIComponent(nome)}/menos`,
+    {
+      method:'PUT'
+    }
+  );
+
+  render();
+}
+
+// Remover produto
+async function removerTudo(nome){
+
+  await fetch(
+    `http://localhost:3000/api/carrinho/${encodeURIComponent(nome)}`,
+    {
+      method:'DELETE'
+    }
+  );
+
+  render();
+}
+
+// Finalizar compra
+async function finalizarCompra(){
+
+  let cart = await getCart();
+
+  if(cart.length === 0){
+
+    alert("Seu carrinho está vazio 🛒");
+
+    return;
+  }
+
+  // Salva os produtos para o checkout
+  localStorage.setItem(
+    "carrinho",
+    JSON.stringify(cart)
+  );
+
+  // Abre a página de pagamento
+  window.location.href = "checkout.html";
+}
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>

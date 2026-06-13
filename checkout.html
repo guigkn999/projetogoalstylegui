@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pagamento</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background:#ededed;
+}
+
+.container-pagamento{
+    max-width:1000px;
+    margin:50px auto;
+}
+
+.card-pagamento,
+.resumo{
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.opcao{
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:15px;
+    cursor:pointer;
+}
+
+.opcao:hover{
+    border-color:#3483fa;
+}
+
+.btn-confirmar{
+    background:#3483fa;
+    color:white;
+    font-weight:bold;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+}
+
+.btn-confirmar:hover{
+    background:#2968c8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container container-pagamento">
+
+    <div class="row g-4">
+
+        <div class="col-md-8">
+
+            <div class="card-pagamento">
+
+                <h3 class="mb-4">Escolha como pagar</h3>
+
+                <label class="opcao d-block">
+                    <input type="radio" name="pagamento" checked>
+                    💸 PIX
+                    <br>
+                    <small>Pagamento instantâneo</small>
+                </label>
+
+                <label class="opcao d-block">
+                    <input type="radio" name="pagamento">
+                    💳 Cartão de Crédito
+                    <br>
+                    <small>Até 12x sem juros</small>
+                </label>
+
+                <label class="opcao d-block">
+                    <input type="radio" name="pagamento">
+                    🧾 Boleto Bancário
+                    <br>
+                    <small>Compensação em até 3 dias úteis</small>
+                </label>
+
+                <hr>
+
+                <h5>Dados do Cartão</h5>
+
+                <input class="form-control mb-3" placeholder="Número do cartão">
+
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control" placeholder="Validade">
+                    </div>
+
+                    <div class="col">
+                        <input class="form-control" placeholder="CVV">
+                    </div>
+                </div>
+
+                <input class="form-control mt-3" placeholder="Nome impresso no cartão">
+
+                <button class="btn-confirmar mt-4">
+                    Confirmar pagamento
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="resumo">
+
+                <h4>Resumo da compra</h4>
+
+                <hr>
+
+                <div id="produtos">
+                    <p>Nenhum produto encontrado.</p>
+                </div>
+
+                <hr>
+
+                <h5>Total:</h5>
+
+                <h3 class="text-success" id="total">
+                    R$ 0,00
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+const produtosDiv = document.getElementById("produtos");
+const totalDiv = document.getElementById("total");
+
+let total = 0;
+
+if(carrinho.length > 0){
+
+    produtosDiv.innerHTML = "";
+
+    carrinho.forEach(item => {
+
+        produtosDiv.innerHTML += `
+            <div class="mb-2">
+                ${item.nome}
+            </div>
+        `;
+
+        let preco = Number(
+            item.preco
+                .replace("R$", "")
+                .replace(/\./g, "")
+                .replace(",", ".")
+        );
+
+        total += preco;
+    });
+
+    totalDiv.innerText =
+        "R$ " +
+        total.toLocaleString("pt-BR", {
+            minimumFractionDigits: 2
+        });
+}
+</script>
+
+</body>
+</html>

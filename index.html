@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoalStyle | Copa do Mundo 2026</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="shortcut icon" href="img/favicon-16x16.png">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body data-bs-theme="light">
+  
+<!--Aqui se inicia a navbar-->
+
+<header class="p-3 text-bg-dark sticky-top">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center position-relative">
+      <a href="#" class="text-white text-decoration-none fw-bold fs-4">GOALSTYLE</a>
+    
+      <ul class="nav nav-center d-none d-lg-flex">
+        <li><a href="#" class="nav-link px-3 text-warning fw-bold text-uppercase">Copa 2026</a></li>
+      </ul>
+
+      <div class="d-flex align-items-center ms-auto">
+        <a href="carrinho.html"
+   class="cart-wrapper me-4 position-relative text-white"
+   style="cursor:pointer; text-decoration:none;">
+
+    <i class="fas fa-shopping-cart fa-lg text-white"></i>
+
+    <span id="cart-count"
+          class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark">
+
+        0
+
+    </span>
+
+</a>
+        <button type="button" class="btn btn-warning btn-sm px-3 fw-bold">Login</button>
+        <button type="button" class="btn btn-outline-light btn-sm px-3 fw-bold ms-2" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrar
+</button>        
+        <div id="theme-toggle" class="text-white ms-4">
+          <i class="fas fa-moon fa-lg"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!---Aqui fecha a navbar-->
+
+
+<!--Aqui inicia o banner-->
+<div class="hero-section">
+    <div class="col-md-6 mx-auto">
+      <h1 class="display-4 fw-bold text-uppercase">O Mundo em Campo</h1> 
+      <p class="lead fw-normal">As armaduras oficiais da Copa 2026.</p>
+      <a class="btn btn-warning btn-lg fw-bold px-5 rounded-pill" href="#vitrine">COMPRAR AGORA</a>
+    </div>
+</div>
+
+<!--Aqui fecha o banner-->
+
+
+<!---Aqui inicia os filtros -->
+
+<main class="container my-5" id="vitrine">
+  <div class="row">
+    <aside class="col-lg-3 d-none d-lg-block">
+      <div class="filter-sidebar">
+        <h5 class="fw-bold text-uppercase mb-4"><i class="fas fa-filter me-2 text-warning"></i>Filtros</h5>
+        <div class="mb-4">
+          <h6 class="fw-bold small text-uppercase border-bottom pb-2">Marca</h6>
+          <div class="form-check my-2">
+            <input class="form-check-input filter-check" type="checkbox" value="nike" id="f-nike">
+            <label class="form-check-label" for="f-nike">Nike</label>
+          </div>
+          <div class="form-check my-2">
+            <input class="form-check-input filter-check" type="checkbox" value="adidas" id="f-adidas">
+            <label class="form-check-label" for="f-adidas">Adidas</label>
+          </div>
+          <div class="form-check my-2">
+            <input class="form-check-input filter-check" type="checkbox" value="puma" id="f-puma">
+            <label class="form-check-label" for="f-puma">Puma</label>
+          </div>
+        </div>
+        <button class="btn btn-outline-secondary btn-sm w-100 fw-bold mt-3" id="clear-filters">LIMPAR FILTROS</button>
+      </div>
+    </aside>
+
+<!--Aqui inicia a sessao de camisas-->
+
+    <div class="col-lg-9">
+      <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+        <h2 class="fw-bold text-uppercase m-0">Seleções 2026</h2>
+        <span class="text-secondary small" id="product-count">16 Produtos</span>
+      </div>
+      
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4" id="product-grid">
+        
+        <div class="col product-item" data-marca="nike">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <span class="badge bg-danger badge-new">LANÇAMENTO</span>
+              <img src="./img/imgbrazil-2026-home-kit.jpg.jpg" class="img-fluid" alt="Brasil">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">NIKE</p>
+              <h6 class="fw-semibold">Camisa Brasil Home 2026</h6>
+              <h5 class="fw-bold">R$ 539,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="adidas">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgargentina-2026-home-kit.jpg.jpg">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">ADIDAS</p>
+              <h6 class="fw-semibold">Camisa Argentina Home 2026</h6>
+              <h5 class="fw-bold">R$ 427,49</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="nike">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgfrance-2026-home-kit.jpg.webp" class="img-fluid" alt="França">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">NIKE</p>
+              <h6 class="fw-semibold">Camisa França Home 2026</h6>
+              <h5 class="fw-bold">R$ 467,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="adidas">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imggermany-2026-home-kit.jpg.jpg" class="img-fluid" alt="Alemanha">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">ADIDAS</p>
+              <h6 class="fw-semibold">Camisa Alemanha Home 2026</h6>
+              <h5 class="fw-bold">R$ 329,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="puma">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgportugal-2026-home-kit.jpg.jpg" class="img-fluid" alt="Portugal">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">PUMA</p>
+              <h6 class="fw-semibold">Camisa Portugal Home 2026</h6>
+              <h5 class="fw-bold">R$ 439,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="adidas">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgspain-2026-home-kit.jpg.jpg" class="img-fluid" alt="Espanha">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">ADIDAS</p>
+              <h6 class="fw-semibold">Camisa Espanha Home 2026</h6>
+              <h5 class="fw-bold">R$ 449,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="nike">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgengland-2026-home-kit.jpg.jpg" class="img-fluid" alt="Inglaterra">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">NIKE</p>
+              <h6 class="fw-semibold">Camisa Inglaterra Home 2026</h6>
+              <h5 class="fw-bold">R$ 279,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+    
+
+        <div class="col product-item" data-marca="adidas">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgitaly-2026-home-kit.jpg.jpg" class="img-fluid" alt="Itália">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">ADIDAS</p>
+              <h6 class="fw-semibold">Camisa Itália Home 2026</h6>
+              <h5 class="fw-bold">R$ 349,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="adidas">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgjapan-2026-home-kit.jpg.jpg" class="img-fluid">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">ADIDAS</p>
+              <h6 class="fw-semibold">Camisa Japão Home 2026</h6>
+              <h5 class="fw-bold">R$ 229,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="adidas">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgmexico-2026-home-kit.jpg.jpg" class="img-fluid">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">ADIDAS</p>
+              <h6 class="fw-semibold">Camisa México Home 2026</h6>
+              <h5 class="fw-bold">R$ 410,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-item" data-marca="nike">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imguruguay-2026-home-kit.jpg.webp" class="img-fluid">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">NIKE</p>
+              <h6 class="fw-semibold">Camisa Uruguai 2026</h6>
+              <h5 class="fw-bold">R$ 349,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col product-item" data-marca="nike">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgusa-2026-home-kit.jpg.webp" class="img-fluid">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">NIKE</p>
+              <h6 class="fw-semibold">Camisa EUA Home 2026</h6>
+              <h5 class="fw-bold">R$ 329,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col product-item" data-marca="nike">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgnetherlands-2026-home-kit.jpg.jpg" class="img-fluid">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">NIKE</p>
+              <h6 class="fw-semibold">Camisa Holanda 2026</h6>
+              <h5 class="fw-bold">R$ 299,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col product-item" data-marca="puma">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgmorocco-2026-home-kit.jpg.jpg" class="img-fluid">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">PUMA</p>
+              <h6 class="fw-semibold">Camisa Marrocos 2026</h6>
+              <h5 class="fw-bold">R$ 349,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col product-item" data-marca="adidas">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgbelgium-2026-home-kit.jpg.jpg" class="img-fluid">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">ADIDAS</p>
+              <h6 class="fw-semibold">Camisa Bélgica 2026</h6>
+              <h5 class="fw-bold">R$ 389,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col product-item" data-marca="nike">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgcroatia-2026-home-kit.jpg.webp" class="img-fluid">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">NIKE</p>
+              <h6 class="fw-semibold">Camisa Croácia 2026</h6>
+              <h5 class="fw-bold">R$ 399,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+                <div class="col product-item" data-marca="puma">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgegypt-2026-home-kit.jpg.jpg" class="img-fluid" alt="Egito">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">PUMA</p>
+              <h6 class="fw-semibold">Camisa Egito Home 2026</h6>
+              <h5 class="fw-bold">R$ 439,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+                <div class="col product-item" data-marca="puma">
+          <div class="card h-100 border-0 shadow-sm p-2">
+            <div class="product-image-container rounded">
+              <img src="./img/imgsenegal-2026-home-kit.jpg.webp" class="img-fluid" alt="Senegal">
+            </div>
+            <div class="card-body text-center">
+              <p class="text-secondary mb-1 small fw-bold">PUMA</p>
+              <h6 class="fw-semibold">Camisa Senegal Home 2026</h6>
+              <h5 class="fw-bold">R$ 352,99</h5>
+              <button class="btn btn-dark w-100 btn-sm mt-2 text-uppercase">Adicionar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<!--Fechamos a parte das camisa-->
+
+
+<!--Aqui é a parte dos botoes de baixo-->
+
+<section class="py-5 border-top border-bottom bg-body-tertiary">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-shipping-fast fa-2x text-primary mb-3"></i>
+          <h6 class="fw-bold mb-1">Entrega Rápida</h6>
+          <p class="small text-secondary mb-0">Receba em tempo recorde.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-shield-alt fa-2x text-success mb-3"></i>
+          <h6 class="fw-bold mb-1">Compra Garantida</h6>
+          <p class="small text-secondary mb-0">Seu dinheiro sempre seguro.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-credit-card fa-2x text-info mb-3"></i>
+          <h6 class="fw-bold mb-1">Até 12x Sem Juros</h6>
+          <p class="small text-secondary mb-0">Aceitamos Pix e Cartões.</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="d-flex flex-column align-items-center">
+          <i class="fas fa-undo-alt fa-2x text-warning mb-3"></i>
+          <h6 class="fw-bold mb-1">Devolução Grátis</h6>
+          <p class="small text-secondary mb-0">7 dias para testar.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!---Aqui fechamos-->
+
+<!--Aqui inicia o footer,a parte final-->
+<footer class="container py-5 text-center">
+  <p class="text-secondary">© 2026 GoalStyle. Todos os direitos reservados. <br>
+  Desenvolvido por <strong>Fabian,Tamires,Thiago,Guilherme e Herbert</strong></p>
+</footer>
+
+<footer>
+    <h3>Nossas Lojas</h3>
+    <div id="map"></div>
+</footer>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+<!--Aqui fecha o footer-->
+
+<!-- Botão WhatsApp -->
+<div class="contact-box" id="contactBox">
+  <h5>💬 Fale Conosco</h5>
+
+  <p><strong>📞 (21) 98782-3670</strong></p>
+
+  <p>
+    Segunda a Sexta-feira<br>
+    Das 08h às 18h
+  </p>
+
+  <a href="https://wa.me/5521987823670"
+     target="_blank"
+     class="btn btn-success w-100">
+     Conversar no WhatsApp
+  </a>
+</div>
+
+<button class="whatsapp-float" id="openContact">
+  <i class="fab fa-whatsapp"></i>
+</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
